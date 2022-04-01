@@ -3,9 +3,11 @@ import React from "react";
 import { useParams, Link, useLocation, Route } from "react-router-dom";
 import units from "../../age-of-empires-units.json";
 import List from "../List";
+import ReactObjectTableViewer from "react-object-table-viewer";
 
 const Detail = () => {
   const { id } = useParams();
+  const showDetail = units.units.find((unit) => unit.id === Number(id));
 
   return (
     <div>
@@ -17,7 +19,9 @@ const Detail = () => {
       >
         <Link to="/">Home</Link> - <Link to="/list">List</Link>
       </nav>
-      <div>Detail {id}</div>
+      <div>
+        <ReactObjectTableViewer data={showDetail} />
+      </div>
     </div>
   );
 };
