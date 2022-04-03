@@ -21,9 +21,9 @@ const List = () => {
       ? setAgeFilteredUnit(ageFilter(ageUnit))
       : setAgeFilteredUnit(getUnits());
   }
-  const [value, setValue] = React.useState<number[]>([0, 20]);
-  const handleChange = (event: Event, newValue: number | number[]) => {
-    setValue(newValue as number[]);
+  const [valueGold, setValueGold] = React.useState<number[]>([0, 20]);
+  const handleGoldChange = (event: Event, newValue: number | number[]) => {
+    setValueGold(newValue as number[]);
   };
 
   return (
@@ -48,7 +48,16 @@ const List = () => {
                 </button>
               </>
             ))}
-
+          <Box sx={{ width: 300 }}>
+            <Slider
+              getAriaLabel={() => "Gold Cost Range"}
+              value={valueGold}
+              onChange={handleGoldChange}
+              valueLabelDisplay="auto"
+              min={0}
+              max={200}
+            />
+          </Box>
           {ageFilteredUnit &&
             ageFilteredUnit.map((unit: any) => (
               <ul key={unit.id}>
