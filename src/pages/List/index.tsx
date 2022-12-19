@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AgeFilter from "../../components/AgeFilter/AgeFilter";
-import { ageFilter, getUnits } from "../../services/services";
+import { ageFilter, buttons, getUnits } from "../../services/services";
 
 const List = () => {
   const [ageFilteredUnit, setAgeFilteredUnit] = useState<any>();
