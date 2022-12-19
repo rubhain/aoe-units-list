@@ -1,15 +1,9 @@
-import { Button, Slider, Checkbox, Box } from "@mui/material";
-import { type } from "@testing-library/user-event/dist/type";
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import packageInfo from "../../age-of-empires-units.json";
-import Detail from "../Detail";
-import Home from "../Home";
-import { ageFilter, buttons, getUnits } from "../../services/services";
-const units = packageInfo.units;
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import AgeFilter from "../../components/AgeFilter/AgeFilter";
+import { ageFilter, getUnits } from "../../services/services";
 
 const List = () => {
-  const unitList = units;
   const [ageFilteredUnit, setAgeFilteredUnit] = useState<any>();
   useEffect(() => {
     setAgeFilteredUnit(getUnits());
@@ -21,10 +15,6 @@ const List = () => {
       ? setAgeFilteredUnit(ageFilter(ageUnit))
       : setAgeFilteredUnit(getUnits());
   }
-  const [valueGold, setValueGold] = React.useState<number[]>([0, 20]);
-  const handleGoldChange = (event: Event, newValue: number | number[]) => {
-    setValueGold(newValue as number[]);
-  };
 
   return (
     <div>
@@ -38,6 +28,8 @@ const List = () => {
       </nav>
       <div>
         <h1>List </h1>
+      </div>
+      <div>
         <h3>Ages</h3>
         <>
           {buttons &&
@@ -48,16 +40,7 @@ const List = () => {
                 </button>
               </>
             ))}
-          <Box sx={{ width: 300 }}>
-            <Slider
-              getAriaLabel={() => "Gold Cost Range"}
-              value={valueGold}
-              onChange={handleGoldChange}
-              valueLabelDisplay="auto"
-              min={0}
-              max={200}
-            />
-          </Box>
+
           {ageFilteredUnit &&
             ageFilteredUnit.map((unit: any) => (
               <ul key={unit.id}>

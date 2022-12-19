@@ -1,10 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Detail from "./components/Detail";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "./components/Home";
-import List from "./components/List";
+import { Link } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
   return (

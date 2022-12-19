@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import List from "./components/List";
-import Detail from "./components/Detail";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import List from "./pages/List";
+import Detail from "./pages/Detail";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,8 +1,6 @@
-import { stringify } from "querystring";
 import React from "react";
-import { useParams, Link, useLocation, Route } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import units from "../../age-of-empires-units.json";
-import List from "../List";
 
 const Detail = () => {
   const { id } = useParams();
