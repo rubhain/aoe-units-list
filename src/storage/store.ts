@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { unitsSlice } from "./unitsSlice";
+import unitsSlice  from "./units/unitsSlice";
+
 
 export const store = configureStore({
     reducer:  {
-        
-    }
+        units: unitsSlice,
+         },
 })
+
