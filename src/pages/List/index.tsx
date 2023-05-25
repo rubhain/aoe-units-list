@@ -5,12 +5,13 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function List() {
+  const units = useSelector((state: any) => state.units);
+
   const [ageSelection, setAgeSelection] = useState("All");
-  const [ageFilter, setAgeFilter] = useState([]);
+  const [ageFilter, setAgeFilter] = useState(units);
 
   const navigate = useNavigate();
 
-  const units = useSelector((state: any) => state.units);
   const ageArray = Array.from(
     new Set<string[]>(units.map((item: any) => item.age))
   );
@@ -29,28 +30,28 @@ function List() {
 
   return (
     <div>
-      <div>
-        <ButtonGroup variant="contained" aria-label="outlined button group">
+      <ButtonGroup variant="contained" aria-label="outlined button group">
+        <Button
+          onClick={() => {
+            setAgeSelection("All");
+          }}
+        >
+          All
+        </Button>
+        {ageArray.map((item: any) => (
           <Button
+            key={item}
             onClick={() => {
-              setAgeSelection("All");
+              setAgeSelection(item);
             }}
           >
-            All
+            {item}
           </Button>
-          {ageArray.map((item: any) => (
-            <Button
-              key={item}
-              onClick={() => {
-                setAgeSelection(item);
-              }}
-            >
-              {item}
-            </Button>
-          ))}
-        </ButtonGroup>
-      </div>
+        ))}
+      </ButtonGroup>
+
       <CostsFilter />
+
       <ul>
         {ageFilter.map((item: any) => (
           <li key={item.id} onClick={() => navigate("/units/" + item.id)}>
